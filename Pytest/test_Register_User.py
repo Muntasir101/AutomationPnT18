@@ -52,7 +52,8 @@ def test_click_signup_login_button(driver):
 # 5. Verify 'New User Signup!' is visible
 def test_verify_signup(driver):
     expected_signup = "New User Signup!"
-    signup = driver.find_element(By.CSS_SELECTOR, ".signup-form > h2")
+    signup = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, ".signup-form > h2")))
     actual_signup_text = signup.text
 
     if expected_signup == actual_signup_text:
